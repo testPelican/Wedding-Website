@@ -45,6 +45,68 @@
             z-index: 0;
         }
 
+        /* ========== LANGUAGE SELECTOR ========== */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            gap: 8px;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 12px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(107,123,94,0.2);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .language-selector.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #8a7a65;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            color: #6b7b5e;
+            background: rgba(107,123,94,0.1);
+        }
+
+        .lang-btn.active {
+            background: #6b7b5e;
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .language-selector {
+                top: 15px;
+                right: 15px;
+                padding: 6px 10px;
+                gap: 4px;
+            }
+
+            .lang-btn {
+                font-size: 0.8rem;
+                padding: 3px 8px;
+            }
+        }
+
         /* ========== ENVELOPE SPLASH SCREEN ========== */
         .envelope-splash {
             position: fixed;
@@ -747,6 +809,13 @@
     </style>
 </head>
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector" id="language-selector">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pl">PL</button>
+        <button class="lang-btn" data-lang="tr">TR</button>
+    </div>
+
     <!-- Envelope Splash Screen -->
     <div class="envelope-splash" id="envelope-splash">
         <div class="envelope">
@@ -757,8 +826,8 @@
                 <span class="wax-seal-text">C&M</span>
             </div>
         </div>
-        <p class="envelope-text">This invitation is just for you</p>
-        <p class="tap-hint">Tap to open</p>
+        <p class="envelope-text" data-i18n="envelopeText">This invitation is just for you</p>
+        <p class="tap-hint" data-i18n="tapHint">Tap to open</p>
     </div>
 
     <!-- Main Content -->
@@ -771,39 +840,39 @@
                 </div>
                 
                 <div class="hero-text-content">
-                    <p class="couple-names" id="couple-names">Cici's <span class="ampersand">&</span> Michal's Wedding</p>
+                    <p class="couple-names" id="couple-names" data-i18n="coupleNames">Cici's <span class="ampersand">&</span> Michal's Wedding</p>
                     
-                    <h1 class="save-the-date" id="save-the-date">Save the Date</h1>
+                    <h1 class="save-the-date" id="save-the-date" data-i18n="saveTheDate">Save the Date</h1>
                     
                     <p class="schloss-name" id="schloss-name">Schloss Haggenberg</p>
                     
-                    <p class="wedding-date" id="wedding-date">5th August 2026</p>
+                    <p class="wedding-date" id="wedding-date" data-i18n="weddingDate">5th August 2026</p>
                     
-                    <p class="more-info" id="more-info">More details to follow here on our official website.<br>Check back later!</p>
+                    <p class="more-info" id="more-info" data-i18n="moreInfo">More details to follow here on our official website.<br>Check back later!</p>
                 </div>
             </div>
         </section>
 
         <!-- Countdown Section -->
         <section class="countdown-section">
-            <h2 class="section-title">Counting Down</h2>
-            <p class="section-subtitle">Until we say "I do"</p>
+            <h2 class="section-title" data-i18n="countingDown">Counting Down</h2>
+            <p class="section-subtitle" data-i18n="untilWeDo">Until we say "I do"</p>
             <div class="countdown-container">
                 <div class="countdown-item">
                     <span class="countdown-number" id="days">000</span>
-                    <span class="countdown-label">Days</span>
+                    <span class="countdown-label" data-i18n="days">Days</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
+                    <span class="countdown-label" data-i18n="hours">Hours</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
+                    <span class="countdown-label" data-i18n="minutes">Minutes</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
+                    <span class="countdown-label" data-i18n="seconds">Seconds</span>
                 </div>
             </div>
         </section>
@@ -811,8 +880,8 @@
         <!-- Schedule Section -->
         <section class="schedule-section">
             <div class="schedule-header">
-                <h2 class="section-title">Programme of the Day</h2>
-                <p class="section-subtitle">What we have planned for you</p>
+                <h2 class="section-title" data-i18n="programmeTitle">Programme of the Day</h2>
+                <p class="section-subtitle" data-i18n="programmeSubtitle">What we have planned for you</p>
             </div>
             
             <div class="timeline">
@@ -825,8 +894,8 @@
                         </svg>
                     </div>
                     <span class="timeline-time">12:00 - 13:00</span>
-                    <h3 class="timeline-title">Arrival via Shuttle from Vienna & Reception</h3>
-                    <p class="timeline-description">Welcome to the castle</p>
+                    <h3 class="timeline-title" data-i18n="arrivalTitle">Arrival via Shuttle from Vienna & Reception</h3>
+                    <p class="timeline-description" data-i18n="arrivalDesc">Welcome to the castle</p>
                 </div>
 
                 <div class="timeline-item" data-delay="100">
@@ -834,8 +903,8 @@
                         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
                     <span class="timeline-time">14:00</span>
-                    <h3 class="timeline-title">Ceremony</h3>
-                    <p class="timeline-description">The most special moment of the day</p>
+                    <h3 class="timeline-title" data-i18n="ceremonyTitle">Ceremony</h3>
+                    <p class="timeline-description" data-i18n="ceremonyDesc">The most special moment of the day</p>
                 </div>
 
                 <div class="timeline-item" data-delay="200">
@@ -853,8 +922,8 @@
                         </svg>
                     </div>
                     <span class="timeline-time">15:00</span>
-                    <h3 class="timeline-title">Cake & Toast</h3>
-                    <p class="timeline-description">Raise a glass to love</p>
+                    <h3 class="timeline-title" data-i18n="cakeTitle">Cake & Toast</h3>
+                    <p class="timeline-description" data-i18n="cakeDesc">Raise a glass to love</p>
                 </div>
 
                 <div class="timeline-item" data-delay="300">
@@ -862,8 +931,8 @@
                         <svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
                     </div>
                     <span class="timeline-time">17:30</span>
-                    <h3 class="timeline-title">Dinner</h3>
-                    <p class="timeline-description">A feast to celebrate</p>
+                    <h3 class="timeline-title" data-i18n="dinnerTitle">Dinner</h3>
+                    <p class="timeline-description" data-i18n="dinnerDesc">A feast to celebrate</p>
                 </div>
 
                 <div class="timeline-item" data-delay="400">
@@ -871,8 +940,8 @@
                         <svg viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M8 17V5l12-2v12"/></svg>
                     </div>
                     <span class="timeline-time">19:30</span>
-                    <h3 class="timeline-title">Party</h3>
-                    <p class="timeline-description">No Sleep Tonight</p>
+                    <h3 class="timeline-title" data-i18n="partyTitle">Party</h3>
+                    <p class="timeline-description" data-i18n="partyDesc">No Sleep Tonight</p>
                 </div>
 
                 <div class="timeline-item" data-delay="500">
@@ -880,8 +949,8 @@
                         <svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                     </div>
                     <span class="timeline-time">00:00</span>
-                    <h3 class="timeline-title">Midnight Snack</h3>
-                    <p class="timeline-description">A late-night treat</p>
+                    <h3 class="timeline-title" data-i18n="snackTitle">Midnight Snack</h3>
+                    <p class="timeline-description" data-i18n="snackDesc">A late-night treat</p>
                 </div>
 
                 <div class="timeline-item" data-delay="600">
@@ -894,8 +963,8 @@
                         </svg>
                     </div>
                     <span class="timeline-time">02:00</span>
-                    <h3 class="timeline-title">Taxi Back to your Accommodation</h3>
-                    <p class="timeline-description">Be Ready for Shuttle the Next Day back to Vienna!</p>
+                    <h3 class="timeline-title" data-i18n="taxiTitle">Taxi Back to your Accommodation</h3>
+                    <p class="timeline-description" data-i18n="taxiDesc">Be Ready for Shuttle the Next Day back to Vienna!</p>
                 </div>
             </div>
         </section>
@@ -903,13 +972,13 @@
         <!-- Location Section -->
         <section class="location-section">
             <div class="location-header">
-                <h2 class="section-title">Details of the Day</h2>
-                <p class="section-subtitle">Join our WhatsApp group to be up to date with everything you need to know!</p>
+                <h2 class="section-title" data-i18n="detailsTitle">Details of the Day</h2>
+                <p class="section-subtitle" data-i18n="detailsSubtitle">Join our WhatsApp group to be up to date with everything you need to know!</p>
             </div>
             
             <div class="qr-code-container" id="qr-code-container">
                 <a href="https://chat.whatsapp.com/IBlCcZkinVUCtyyYB8zjWH" class="qr-code-link"><img src="qr_code.jpg" alt="QR Code" class="qr-code-img"></a>
-                <p class="qr-code-text">Click on QR code to join the Group!</p>
+                <p class="qr-code-text" data-i18n="qrCodeText">Click on QR code to join the Group!</p>
             </div>
 
             <div style="text-align: center;">
@@ -920,7 +989,7 @@
                 <p class="location-address">Hagenberg 1, 2133 Hagenberg, Austria</p>
                 <p class="location-time">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    From 12:00 to late
+                    <span data-i18n="locationTime">From 12:00 to late</span>
                 </p>
             </div>
 
@@ -935,7 +1004,7 @@
             <div style="text-align: center;">
                 <a href="https://www.google.com/maps/dir//Schloss+Haggenberg,+Hagenberg+1,+2133+Hagenberg,+Austria" target="_blank" class="directions-btn">
                     <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-                    Get Directions
+                    <span data-i18n="getDirections">Get Directions</span>
                 </a>
             </div>
         </section>
@@ -948,15 +1017,199 @@
     </div>
 
     <script>
-        // Envelope click handler
+        // ========== TRANSLATIONS ==========
+        const translations = {
+            en: {
+                // Envelope
+                envelopeText: "This invitation is just for you",
+                tapHint: "Tap to open",
+                // Hero
+                coupleNames: "Cici's <span class=\"ampersand\">&</span> Michal's Wedding",
+                saveTheDate: "Save the Date",
+                weddingDate: "5th August 2026",
+                moreInfo: "More details to follow here on our official website.<br>Check back later!",
+                // Countdown
+                countingDown: "Counting Down",
+                untilWeDo: "Until we say \"I do\"",
+                days: "Days",
+                hours: "Hours",
+                minutes: "Minutes",
+                seconds: "Seconds",
+                // Programme
+                programmeTitle: "Programme of the Day",
+                programmeSubtitle: "What we have planned for you",
+                arrivalTitle: "Arrival via Shuttle from Vienna & Reception",
+                arrivalDesc: "Welcome to the castle",
+                ceremonyTitle: "Ceremony",
+                ceremonyDesc: "The most special moment of the day",
+                cakeTitle: "Cake & Toast",
+                cakeDesc: "Raise a glass to love",
+                dinnerTitle: "Dinner",
+                dinnerDesc: "A feast to celebrate",
+                partyTitle: "Party",
+                partyDesc: "No Sleep Tonight",
+                snackTitle: "Midnight Snack",
+                snackDesc: "A late-night treat",
+                taxiTitle: "Taxi Back to your Accommodation",
+                taxiDesc: "Be Ready for Shuttle the Next Day back to Vienna!",
+                // Details
+                detailsTitle: "Details of the Day",
+                detailsSubtitle: "Join our WhatsApp group to be up to date with everything you need to know!",
+                qrCodeText: "Click on QR code to join the Group!",
+                locationTime: "From 12:00 to late",
+                getDirections: "Get Directions"
+            },
+            pl: {
+                // Envelope
+                envelopeText: "To zaproszenie jest właśnie dla Ciebie",
+                tapHint: "Dotknij, aby otworzyć",
+                // Hero
+                coupleNames: "Ślub Cici <span class=\"ampersand\">&</span> Michała",
+                saveTheDate: "Zarezerwuj Datę",
+                weddingDate: "5 Sierpnia 2026",
+                moreInfo: "Więcej szczegółów wkrótce na naszej oficjalnej stronie.<br>Zajrzyj tu później!",
+                // Countdown
+                countingDown: "Odliczamy",
+                untilWeDo: "Do naszego \"Tak, Biorę\"",
+                days: "Dni",
+                hours: "Godzin",
+                minutes: "Minut",
+                seconds: "Sekund",
+                // Programme
+                programmeTitle: "Program Dnia",
+                programmeSubtitle: "Co dla Was przygotowaliśmy",
+                arrivalTitle: "Przyjazd Busem z Wiednia & Przyjęcie Gości",
+                arrivalDesc: "Witamy w zamku",
+                ceremonyTitle: "Ceremonia",
+                ceremonyDesc: "Najważniejszy moment dnia",
+                cakeTitle: "Tort & Toast",
+                cakeDesc: "Wznieśmy toast za miłość",
+                dinnerTitle: "Obiad",
+                dinnerDesc: "Uczta na cześć pary młodej",
+                partyTitle: "Impreza",
+                partyDesc: "Dziś nie śpimy",
+                snackTitle: "Nocna Przekąska",
+                snackDesc: "Późna niespodzianka",
+                taxiTitle: "Taxi do Waszego Zakwaterowania",
+                taxiDesc: "Bądźcie gotowi na Busem następnego dnia do Wiednia!",
+                // Details
+                detailsTitle: "Szczegóły Dnia",
+                detailsSubtitle: "Dołącz do naszej grupy WhatsApp, aby być na bieżąco ze wszystkim!",
+                qrCodeText: "Kliknij kod QR, aby dołączyć do grupy!",
+                locationTime: "Od 12:00 do późna",
+                getDirections: "Pokaż Trasę"
+            },
+            tr: {
+                // Envelope
+                envelopeText: "Bu davetiye sadece senin için",
+                tapHint: "Açmak için dokun",
+                // Hero
+                coupleNames: "Cici <span class=\"ampersand\">&</span> Michal'ın Düğünü",
+                saveTheDate: "Tarihi Kaydedin",
+                weddingDate: "5 Ağustos 2026",
+                moreInfo: "Daha fazla detay yakında resmi web sitemizde.<br>Daha sonra tekrar bakın!",
+                // Countdown
+                countingDown: "Geri Sayım",
+                untilWeDo: "\"Evet\" diyene kadar",
+                days: "Gün",
+                hours: "Saat",
+                minutes: "Dakika",
+                seconds: "Saniye",
+                // Programme
+                programmeTitle: "Günün Programı",
+                programmeSubtitle: "Sizin için planladıklarımız",
+                arrivalTitle: "Viyana'dan Servis ile Varış & Karşılama",
+                arrivalDesc: "Şatoya hoş geldiniz",
+                ceremonyTitle: "Tören",
+                ceremonyDesc: "Günün en özel anı",
+                cakeTitle: "Pasta & Kadeh Kaldırma",
+                cakeDesc: "Aşk için kadeh kaldırın",
+                dinnerTitle: "Akşam Yemeği",
+                dinnerDesc: "Kutlama ziyafeti",
+                partyTitle: "Parti",
+                partyDesc: "Bu Gece Uyku Yok",
+                snackTitle: "Gece Yarısı Atıştırmalığı",
+                snackDesc: "Gece geç saatte bir sürpriz",
+                taxiTitle: "Konaklamanıza Taksi",
+                taxiDesc: "Ertesi Gün Viyana'ya Servis için Hazır Olun!",
+                // Details
+                detailsTitle: "Günün Detayları",
+                detailsSubtitle: "Her şeyden haberdar olmak için WhatsApp grubumuza katılın!",
+                qrCodeText: "Gruba katılmak için QR koda tıklayın!",
+                locationTime: "12:00'den geç saatlere kadar",
+                getDirections: "Yol Tarifi Al"
+            }
+        };
+
+        // ========== LANGUAGE SYSTEM ==========
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Save preference
+            localStorage.setItem('weddingLang', lang);
+        }
+
+        function detectLanguage() {
+            // Check if user has a saved preference
+            const savedLang = localStorage.getItem('weddingLang');
+            if (savedLang && translations[savedLang]) {
+                return savedLang;
+            }
+
+            // Detect browser language
+            const browserLang = navigator.language.slice(0, 2).toLowerCase();
+            const supportedLanguages = ['en', 'pl', 'tr'];
+            
+            if (supportedLanguages.includes(browserLang)) {
+                return browserLang;
+            }
+
+            return 'en'; // Default to English
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const detectedLang = detectLanguage();
+            setLanguage(detectedLang);
+
+            // Set up language button click handlers
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+        });
+
+        // ========== ENVELOPE & ANIMATIONS ==========
         const envelopeSplash = document.getElementById('envelope-splash');
         const mainContent = document.getElementById('main-content');
+        const languageSelector = document.getElementById('language-selector');
 
         envelopeSplash.addEventListener('click', function() {
             envelopeSplash.classList.add('hidden');
             
             setTimeout(() => {
                 mainContent.classList.add('visible');
+                languageSelector.classList.add('visible');
                 startHeroAnimations();
             }, 400);
         });
