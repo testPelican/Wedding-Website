@@ -574,9 +574,11 @@
         /* ========== QR CODE SECTION ========== */
         .qr-code-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
             justify-content: center;
+            gap: 50px;
             margin-bottom: 40px;
             opacity: 0;
             transform: translateY(20px);
@@ -586,6 +588,12 @@
         .qr-code-container.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .qr-code-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .qr-code-text {
@@ -835,8 +843,6 @@
                     <p class="schloss-name" id="schloss-name">Schloss Haggenberg</p>
                     
                     <p class="wedding-date" id="wedding-date" data-i18n="weddingDate">5th August 2026</p>
-                    
-                    <p class="more-info" id="more-info" data-i18n="moreInfo">More details to follow here on our official website.<br>Check back later!</p>
                 </div>
             </div>
         </section>
@@ -935,7 +941,7 @@
                     <div class="timeline-icon">
                         <svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
                     </div>
-                    <span class="timeline-time">18:00</span>
+                    <span class="timeline-time">18:30</span>
                     <h3 class="timeline-title" data-i18n="dinnerTitle">Dinner</h3>
                     <p class="timeline-description" data-i18n="dinnerDesc">A feast to celebrate</p>
                 </div>
@@ -944,7 +950,7 @@
                     <div class="timeline-icon">
                         <svg viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M8 17V5l12-2v12"/></svg>
                     </div>
-                    <span class="timeline-time">19:30</span>
+                    <span class="timeline-time">20:00</span>
                     <h3 class="timeline-title" data-i18n="partyTitle">Party</h3>
                     <p class="timeline-description" data-i18n="partyDesc">No Sleep Tonight</p>
                 </div>
@@ -990,12 +996,18 @@
                 <h3 class="location-name" data-i18n="transportTitle">Transportation</h3>
                 <p class="section-subtitle" data-i18n="transportDesc">A shuttle bus will collect everyone from Schwedenplatz in Vienna and bring you to Schloss Haggenberg, then take everyone back to Vienna in the late evening. <br>If you need to arrive at a different time or leave a little earlier, you can take the train from Vienna to Laa an der Thaya and then a short taxi to the castle (or a taxi to Laa an der Thaya and the train back to Vienna).</p>
                 <br><br><br>
-                <p class="section-subtitle" data-i18n="detailsSubtitle">Join our WhatsApp group to be up to date with everything you need to know!</p>
+                <p class="section-subtitle" data-i18n="detailsSubtitle">Join our WhatsApp group to be up to date with everything you need to know! Also please RSVP if you are coming by 15th of July latest.</p>
             </div>
             
             <div class="qr-code-container" id="qr-code-container">
-                <a href="https://chat.whatsapp.com/IBlCcZkinVUCtyyYB8zjWH" class="qr-code-link"><img src="qr_code.jpg" alt="QR Code" class="qr-code-img"></a>
-                <p class="qr-code-text" data-i18n="qrCodeText">Click on QR code to join the Group!</p>
+                <div class="qr-code-item">
+                    <a href="https://chat.whatsapp.com/IBlCcZkinVUCtyyYB8zjWH" class="qr-code-link"><img src="qr_code.jpg" alt="WhatsApp QR Code" class="qr-code-img"></a>
+                    <p class="qr-code-text" data-i18n="qrCodeText">Click on QR code to join the Group!</p>
+                </div>
+                <div class="qr-code-item">
+                    <a href="https://form.jotform.com/261803426683056" class="qr-code-link"><img src="rsvp_qr_code.jpg" alt="RSVP QR Code" class="qr-code-img"></a>
+                    <p class="qr-code-text" data-i18n="rsvpQrCodeText">Please let us know if you are joining us!</p>
+                </div>
             </div>
 
             <div style="text-align: center;">
@@ -1006,7 +1018,7 @@
                 <p class="location-address">Hagenberg 1, 2133 Hagenberg, Austria</p>
                 <p class="location-time">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    <span data-i18n="locationTime">From 12:00 to late</span>
+                    <span data-i18n="locationTime">From 13:00 to late</span>
                 </p>
             </div>
 
@@ -1044,7 +1056,6 @@
                 coupleNames: "Cici's <span class=\"ampersand\">&</span> Michal's Wedding",
                 saveTheDate: "Save the Date",
                 weddingDate: "5th August 2026",
-                moreInfo: "More details to follow here on our official website.<br>Check back later!",
                 // Countdown
                 countingDown: "Counting Down",
                 untilWeDo: "Until we say \"I do\"",
@@ -1079,9 +1090,10 @@
                 giftDesc: "Your presence at our wedding is truly the greatest gift we could ask for. <br>If you still feel like giving a little something, we would love a few pennies towards our honeymoon travels 💛",
                 transportTitle: "Transportation",
                 transportDesc: "A shuttle bus will collect everyone from Schwedenplatz in Vienna and bring you to Schloss Haggenberg, then take everyone back to Vienna in the late evening. <br>If you need to arrive at a different time or leave a little earlier, you can take the train from Vienna to Laa an der Thaya and then a short taxi to the castle (or a taxi to Laa an der Thaya and the train back to Vienna).",
-                detailsSubtitle: "Join our WhatsApp group to be up to date with everything you need to know!",
+                detailsSubtitle: "Join our WhatsApp group to be up to date with everything you need to know! Also please RSVP if you are coming by 15th of July latest.",
                 qrCodeText: "Click on QR code to join the Group!",
-                locationTime: "From 12:00 to late",
+                rsvpQrCodeText: "Please let us know if you are joining us!",
+                locationTime: "From 13:00 to late",
                 getDirections: "Get Directions"
             },
             pl: {
@@ -1092,7 +1104,6 @@
                 coupleNames: "Ślub Cici <span class=\"ampersand\">&</span> Michała",
                 saveTheDate: "Zarezerwuj Datę",
                 weddingDate: "5 Sierpnia 2026",
-                moreInfo: "Więcej szczegółów wkrótce na naszej oficjalnej stronie.<br>Zajrzyj tu później!",
                 // Countdown
                 countingDown: "Odliczamy",
                 untilWeDo: "Do naszego \"Tak, Biorę\"",
@@ -1127,9 +1138,10 @@
                 giftDesc: "Wasza obecność na naszym ślubie jest naprawdę najpiękniejszym prezentem, o jaki moglibyśmy prosić, i szczerze nie potrzebujemy niczego więcej. <br>Ale jeśli mimo to chcielibyście podarować nam coś od serca, będziemy wdzięczni za kilka groszy na naszą podróż poślubną 💛",
                 transportTitle: "Transport",
                 transportDesc: "Autokar zabierze wszystkich z placu Schwedenplatz w Wiedniu i przywiezie do Schloss Haggenberg, a późnym wieczorem odwiezie z powrotem do Wiednia. <br>Jeśli musicie dotrzeć o innej porze lub wyjechać nieco wcześniej, możecie pojechać pociągiem z Wiednia do Laa an der Thaya, a stamtąd taksówką do zamku (lub taksówką do Laa an der Thaya i pociągiem z powrotem do Wiednia).",
-                detailsSubtitle: "Dołącz do naszej grupy WhatsApp, aby być na bieżąco ze wszystkim!",
+                detailsSubtitle: "Dołącz do naszej grupy WhatsApp, aby być na bieżąco ze wszystkim! Prosimy również o potwierdzenie obecności (RSVP) najpóźniej do 15 lipca.",
                 qrCodeText: "Kliknij kod QR, aby dołączyć do grupy!",
-                locationTime: "Od 12:00 do późna",
+                rsvpQrCodeText: "Daj nam znać, czy będziesz z nami!",
+                locationTime: "Od 13:00 do późna",
                 getDirections: "Pokaż Trasę"
             },
             tr: {
@@ -1140,7 +1152,6 @@
                 coupleNames: "Cici <span class=\"ampersand\">&</span> Michal'ın Düğünü",
                 saveTheDate: "Tarihi Kaydedin",
                 weddingDate: "5 Ağustos 2026",
-                moreInfo: "Daha fazla detay yakında resmi web sitemizde.<br>Daha sonra tekrar bakın!",
                 // Countdown
                 countingDown: "Geri Sayım",
                 untilWeDo: "\"Evet\" diyene kadar",
@@ -1175,9 +1186,10 @@
                 giftDesc: "Düğünümüzde bulunmanız bizim için gerçekten isteyebileceğimiz en büyük hediye ve dürüst olmak gerekirse başka hiçbir şeye ihtiyacımız yok. <br>Ama yine de küçük bir şey vermek isterseniz, balayı seyahatimiz için birkaç kuruş çok makbule geçer 💛",
                 transportTitle: "Ulaşım",
                 transportDesc: "Bir servis otobüsü herkesi Viyana'daki Schwedenplatz'dan alıp Schloss Haggenberg'e götürecek, akşamın geç saatlerinde de Viyana'ya geri getirecek. <br>Farklı bir saatte gelmeniz ya da biraz daha erken ayrılmanız gerekirse, Viyana'dan Laa an der Thaya'ya trenle gidip oradan şatoya kısa bir taksi yolculuğu yapabilirsiniz (ya da Laa an der Thaya'ya taksiyle gidip Viyana'ya trenle dönebilirsiniz).",
-                detailsSubtitle: "Her şeyden haberdar olmak için WhatsApp grubumuza katılın!",
+                detailsSubtitle: "Her şeyden haberdar olmak için WhatsApp grubumuza katılın! Ayrıca katılacaksanız lütfen en geç 15 Temmuz'a kadar LCV bildiriniz.",
                 qrCodeText: "Gruba katılmak için QR koda tıklayın!",
-                locationTime: "12:00'den geç saatlere kadar",
+                rsvpQrCodeText: "Bize katılıp katılmayacağınızı lütfen bildirin!",
+                locationTime: "13:00'den geç saatlere kadar",
                 getDirections: "Yol Tarifi Al"
             }
         };
@@ -1262,8 +1274,7 @@
                 'couple-names',
                 'save-the-date',
                 'schloss-name',
-                'wedding-date',
-                'more-info'
+                'wedding-date'
             ];
 
             elements.forEach((id) => {
