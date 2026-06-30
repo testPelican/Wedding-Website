@@ -102,7 +102,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #f8f6f1 0%, #ebe8e0 100%);
+            background: linear-gradient(135deg, #f1f3ec 0%, #e2e7da 100%);
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -120,68 +120,75 @@
 
         .envelope {
             position: relative;
-            width: 280px;
-            height: 180px;
-            perspective: 1000px;
+            width: 300px;
+            height: 360px;
+            perspective: 1600px;
+            animation: envelopeIn 1s ease-out both, envelopeFloat 4.5s ease-in-out 1s infinite;
         }
 
-        .envelope-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #f5f3ee 0%, #e8e4db 100%);
-            border-radius: 4px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+        @keyframes envelopeIn {
+            0% { opacity: 0; transform: translateY(40px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .envelope-flap {
+        @keyframes envelopeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Inside / back of the envelope, revealed when the flap opens */
+        .envelope-base {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #f5f3ee 0%, #ece9e1 100%);
-            clip-path: polygon(0 0, 50% 55%, 100% 0);
-            transform-origin: top center;
-            transition: transform 0.6s ease;
+            inset: 0;
+            background: linear-gradient(135deg, #c7d1b6 0%, #aab991 55%, #9aa980 100%);
+            border-radius: 6px;
+            box-shadow: 0 30px 60px rgba(74,90,66,0.28), 0 10px 20px rgba(74,90,66,0.15);
+        }
+
+        .envelope-base::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 6px;
+            box-shadow: inset 0 0 60px rgba(74,90,66,0.2);
+        }
+
+        /* Triangular paper flaps that meet in the centre */
+        .env-flap {
+            position: absolute;
+            inset: 0;
+            border-radius: 6px;
+            filter: drop-shadow(0 0 1px rgba(74,90,66,0.35));
+        }
+
+        .env-flap.bottom {
+            background: linear-gradient(0deg, #b3bf99 0%, #c4cfb2 100%);
+            clip-path: polygon(0 100%, 100% 100%, 50% 48%);
             z-index: 2;
         }
 
-        .envelope:hover .envelope-flap {
-            transform: rotateX(20deg);
+        .env-flap.left {
+            background: linear-gradient(120deg, #bcc7a8 0%, #aab88f 100%);
+            clip-path: polygon(0 0, 0 100%, 50% 50%);
+            z-index: 2;
         }
 
-        .envelope-front {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: linear-gradient(180deg, #f0ede6 0%, #e5e1d8 100%);
-            border-radius: 0 0 4px 4px;
-            z-index: 3;
+        .env-flap.right {
+            background: linear-gradient(240deg, #bcc7a8 0%, #aab88f 100%);
+            clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+            z-index: 2;
         }
 
-        .envelope-back::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            border-right: 1px solid rgba(0,0,0,0.03);
-            clip-path: polygon(0 0, 100% 55%, 0 100%);
+        .env-flap.top {
+            background: linear-gradient(180deg, #ccd6bd 0%, #b6c29c 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 52%);
+            transform-origin: top center;
+            transition: transform 1s cubic-bezier(0.6, 0.04, 0.2, 1);
+            z-index: 4;
         }
 
-        .envelope-back::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            border-left: 1px solid rgba(0,0,0,0.03);
-            clip-path: polygon(100% 0, 0 55%, 100% 100%);
+        .envelope:hover .env-flap.top {
+            transform: rotateX(18deg);
         }
 
         .wax-seal {
@@ -189,48 +196,68 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle at 30% 30%, #d4c4b0 0%, #a89880 40%, #8a7a65 100%);
-            border-radius: 50%;
-            z-index: 4;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 35% 30%, #f3d896 0%, #ddb858 35%, #c0922f 68%, #8f661f 100%);
+            border-radius: 47% 50% 49% 51% / 50% 48% 52% 50%;
+            z-index: 6;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 
-                0 4px 15px rgba(0,0,0,0.2),
-                inset 0 2px 4px rgba(255,255,255,0.3),
-                inset 0 -2px 4px rgba(0,0,0,0.1);
-            animation: sealPulse 2s ease-in-out infinite;
+            box-shadow:
+                0 6px 18px rgba(74,58,20,0.4),
+                inset 0 3px 6px rgba(255,240,190,0.6),
+                inset 0 -4px 8px rgba(90,60,15,0.55);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            animation: sealPulse 2.4s ease-in-out infinite;
         }
 
         .wax-seal::before {
             content: '';
             position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 2px solid rgba(255,255,255,0.2);
+            width: 82%;
+            height: 82%;
+            border: 1.5px solid rgba(120,85,25,0.45);
             border-radius: 50%;
+            box-shadow: inset 0 0 8px rgba(255,235,180,0.4);
         }
 
         .wax-seal-text {
             font-family: 'Tangerine', cursive;
-            font-size: 1.8rem;
-            color: #f5f2eb;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            letter-spacing: 2px;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #4a3a16;
+            text-shadow: 0 1px 1px rgba(255,240,190,0.45), 0 -1px 1px rgba(70,45,10,0.5);
+            letter-spacing: 1px;
+            z-index: 1;
         }
 
         @keyframes sealPulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.03); }
+            50% { transform: translate(-50%, -50%) scale(1.04); }
+        }
+
+        /* Opening animation triggered on click */
+        .envelope-splash.opening .envelope {
+            animation: none;
+        }
+
+        .envelope-splash.opening .env-flap.top {
+            transform: rotateX(-172deg);
+            z-index: 1;
+        }
+
+        .envelope-splash.opening .wax-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5) rotate(-12deg);
+            animation: none;
         }
 
         .envelope-text {
             margin-top: 40px;
             font-family: 'Tangerine', cursive;
             font-size: 1.8rem;
-            color: #8a7a65;
+            color: #5e6e51;
             text-align: center;
             opacity: 0;
             animation: fadeIn 1s ease-out 0.5s forwards;
@@ -240,7 +267,7 @@
             margin-top: 20px;
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
-            color: #a99;
+            color: #8a9a7c;
             letter-spacing: 2px;
             text-transform: uppercase;
             opacity: 0;
@@ -758,17 +785,17 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 480px) {
             .envelope {
-                width: 240px;
-                height: 155px;
+                width: 250px;
+                height: 300px;
             }
 
             .wax-seal {
-                width: 60px;
-                height: 60px;
+                width: 84px;
+                height: 84px;
             }
 
             .wax-seal-text {
-                font-size: 1.5rem;
+                font-size: 2.1rem;
             }
 
             .countdown-item {
@@ -815,9 +842,11 @@
     <!-- Envelope Splash Screen -->
     <div class="envelope-splash" id="envelope-splash">
         <div class="envelope">
-            <div class="envelope-back"></div>
-            <div class="envelope-flap"></div>
-            <div class="envelope-front"></div>
+            <div class="envelope-base"></div>
+            <div class="env-flap bottom"></div>
+            <div class="env-flap left"></div>
+            <div class="env-flap right"></div>
+            <div class="env-flap top"></div>
             <div class="wax-seal">
                 <span class="wax-seal-text">C&M</span>
             </div>
@@ -1257,14 +1286,20 @@
         const mainContent = document.getElementById('main-content');
         const languageSelector = document.getElementById('language-selector');
 
+        let envelopeOpened = false;
         envelopeSplash.addEventListener('click', function() {
-            envelopeSplash.classList.add('hidden');
-            
+            if (envelopeOpened) return;
+            envelopeOpened = true;
+
+            // Play the flap-opening animation first
+            envelopeSplash.classList.add('opening');
+
             setTimeout(() => {
+                envelopeSplash.classList.add('hidden');
                 mainContent.classList.add('visible');
                 languageSelector.classList.add('visible');
                 startHeroAnimations();
-            }, 400);
+            }, 950);
         });
 
         // Hero animations
