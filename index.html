@@ -102,7 +102,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #f8f6f1 0%, #ebe8e0 100%);
+            background: linear-gradient(135deg, #f1f3ec 0%, #e2e7da 100%);
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -120,117 +120,109 @@
 
         .envelope {
             position: relative;
-            width: 280px;
-            height: 180px;
-            perspective: 1000px;
-        }
-
-        .envelope-back {
-            position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(145deg, #f5f3ee 0%, #e8e4db 100%);
-            border-radius: 4px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+            perspective: 1800px;
+            animation: envelopeIn 1.1s ease-out both;
         }
 
-        .envelope-flap {
+        @keyframes envelopeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Inside / back of the envelope, revealed when the flap opens */
+        .envelope-base {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #f5f3ee 0%, #ece9e1 100%);
-            clip-path: polygon(0 0, 50% 55%, 100% 0);
-            transform-origin: top center;
-            transition: transform 0.6s ease;
+            inset: 0;
+            background: linear-gradient(135deg, #6a7a55 0%, #586a45 55%, #4c5d3b 100%);
+        }
+
+        .envelope-base::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 120px rgba(74,90,66,0.18);
+        }
+
+        /* Triangular paper flaps that meet in the centre */
+        .env-flap {
+            position: absolute;
+            inset: 0;
+            filter: drop-shadow(0 0 1px rgba(74,90,66,0.35));
+        }
+
+        .env-flap.bottom {
+            background: linear-gradient(0deg, #55663f 0%, #647450 100%);
+            clip-path: polygon(0 100%, 100% 100%, 50% 55%);
             z-index: 2;
         }
 
-        .envelope:hover .envelope-flap {
-            transform: rotateX(20deg);
+        .env-flap.left {
+            background: linear-gradient(120deg, #66764f 0%, #586a44 100%);
+            clip-path: polygon(0 0, 0 100%, 50% 56%);
+            z-index: 2;
         }
 
-        .envelope-front {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: linear-gradient(180deg, #f0ede6 0%, #e5e1d8 100%);
-            border-radius: 0 0 4px 4px;
-            z-index: 3;
+        .env-flap.right {
+            background: linear-gradient(240deg, #66764f 0%, #586a44 100%);
+            clip-path: polygon(100% 0, 100% 100%, 50% 56%);
+            z-index: 2;
         }
 
-        .envelope-back::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            border-right: 1px solid rgba(0,0,0,0.03);
-            clip-path: polygon(0 0, 100% 55%, 0 100%);
+        .env-flap.top {
+            background: linear-gradient(180deg, #71805b 0%, #5d6d48 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 57%);
+            transform-origin: top center;
+            transition: transform 1s cubic-bezier(0.6, 0.04, 0.2, 1);
+            z-index: 4;
         }
 
-        .envelope-back::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            border-left: 1px solid rgba(0,0,0,0.03);
-            clip-path: polygon(100% 0, 0 55%, 100% 100%);
+        .envelope:hover .env-flap.top {
+            transform: rotateX(18deg);
         }
 
         .wax-seal {
             position: absolute;
-            top: 50%;
+            top: 56%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle at 30% 30%, #d4c4b0 0%, #a89880 40%, #8a7a65 100%);
-            border-radius: 50%;
-            z-index: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 
-                0 4px 15px rgba(0,0,0,0.2),
-                inset 0 2px 4px rgba(255,255,255,0.3),
-                inset 0 -2px 4px rgba(0,0,0,0.1);
-            animation: sealPulse 2s ease-in-out infinite;
+            width: clamp(150px, 34vmin, 320px);
+            height: clamp(150px, 34vmin, 320px);
+            z-index: 6;
+            filter: drop-shadow(5px 9px 7px rgba(30,24,8,0.5));
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            animation: sealPulse 2.6s ease-in-out infinite;
         }
 
-        .wax-seal::before {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 50%;
-        }
-
-        .wax-seal-text {
-            font-family: 'Tangerine', cursive;
-            font-size: 1.8rem;
-            color: #f5f2eb;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            letter-spacing: 2px;
+        .wax-seal svg {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         @keyframes sealPulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.03); }
+            50% { transform: translate(-50%, -50%) scale(1.04); }
+        }
+
+        /* Opening animation triggered on click */
+        .envelope-splash.opening .env-flap.top {
+            transform: rotateX(-172deg);
+            z-index: 1;
+        }
+
+        .envelope-splash.opening .wax-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5) rotate(-12deg);
+            animation: none;
         }
 
         .envelope-text {
             margin-top: 40px;
             font-family: 'Tangerine', cursive;
             font-size: 1.8rem;
-            color: #8a7a65;
+            color: #5e6e51;
             text-align: center;
             opacity: 0;
             animation: fadeIn 1s ease-out 0.5s forwards;
@@ -240,7 +232,7 @@
             margin-top: 20px;
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
-            color: #a99;
+            color: #8a9a7c;
             letter-spacing: 2px;
             text-transform: uppercase;
             opacity: 0;
@@ -757,20 +749,6 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 480px) {
-            .envelope {
-                width: 240px;
-                height: 155px;
-            }
-
-            .wax-seal {
-                width: 60px;
-                height: 60px;
-            }
-
-            .wax-seal-text {
-                font-size: 1.5rem;
-            }
-
             .countdown-item {
                 min-width: 70px;
                 padding: 15px 10px;
@@ -815,15 +793,72 @@
     <!-- Envelope Splash Screen -->
     <div class="envelope-splash" id="envelope-splash">
         <div class="envelope">
-            <div class="envelope-back"></div>
-            <div class="envelope-flap"></div>
-            <div class="envelope-front"></div>
+            <div class="envelope-base"></div>
+            <div class="env-flap bottom"></div>
+            <div class="env-flap left"></div>
+            <div class="env-flap right"></div>
+            <div class="env-flap top"></div>
             <div class="wax-seal">
-                <span class="wax-seal-text">C&M</span>
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gold wax seal with botanical crest">
+                    <defs>
+                        <radialGradient id="waxGold" gradientUnits="userSpaceOnUse" cx="74" cy="70" r="135">
+                            <stop offset="0" stop-color="#f9e9b0"/>
+                            <stop offset="0.30" stop-color="#e8cf80"/>
+                            <stop offset="0.60" stop-color="#cba24c"/>
+                            <stop offset="0.82" stop-color="#a87c2f"/>
+                            <stop offset="1" stop-color="#8a6122"/>
+                        </radialGradient>
+                        <radialGradient id="waxInner" cx="42%" cy="36%" r="72%">
+                            <stop offset="0" stop-color="#d9b65f"/>
+                            <stop offset="0.7" stop-color="#bd9038"/>
+                            <stop offset="1" stop-color="#9c7329"/>
+                        </radialGradient>
+                        <g id="botanical">
+                            <!-- laurel wreath, left arc -->
+                            <ellipse cx="70.4" cy="141.2" rx="10" ry="4" transform="rotate(220 70.4 141.2)"/>
+                            <ellipse cx="56.8" cy="121.7" rx="10" ry="4" transform="rotate(250 56.8 121.7)"/>
+                            <ellipse cx="54.7" cy="98" rx="10" ry="4" transform="rotate(280 54.7 98)"/>
+                            <ellipse cx="64.8" cy="76.4" rx="10" ry="4" transform="rotate(310 64.8 76.4)"/>
+                            <ellipse cx="84.3" cy="62.8" rx="10" ry="4" transform="rotate(340 84.3 62.8)"/>
+                            <!-- laurel wreath, right arc -->
+                            <ellipse cx="129.6" cy="141.2" rx="10" ry="4" transform="rotate(140 129.6 141.2)"/>
+                            <ellipse cx="143.2" cy="121.7" rx="10" ry="4" transform="rotate(110 143.2 121.7)"/>
+                            <ellipse cx="145.3" cy="98" rx="10" ry="4" transform="rotate(80 145.3 98)"/>
+                            <ellipse cx="135.2" cy="76.4" rx="10" ry="4" transform="rotate(50 135.2 76.4)"/>
+                            <ellipse cx="115.7" cy="62.8" rx="10" ry="4" transform="rotate(20 115.7 62.8)"/>
+                            <!-- central sheaf -->
+                            <rect x="98.8" y="84" width="2.4" height="54" rx="1.2"/>
+                            <ellipse cx="92" cy="116" rx="7" ry="2.8" transform="rotate(-35 92 116)"/>
+                            <ellipse cx="108" cy="116" rx="7" ry="2.8" transform="rotate(35 108 116)"/>
+                            <ellipse cx="90" cy="102" rx="7" ry="2.8" transform="rotate(-38 90 102)"/>
+                            <ellipse cx="110" cy="102" rx="7" ry="2.8" transform="rotate(38 110 102)"/>
+                            <ellipse cx="93" cy="90" rx="6" ry="2.6" transform="rotate(-32 93 90)"/>
+                            <ellipse cx="107" cy="90" rx="6" ry="2.6" transform="rotate(32 107 90)"/>
+                            <ellipse cx="100" cy="80" rx="4" ry="8"/>
+                            <!-- ribbon knot -->
+                            <circle cx="100" cy="140" r="4"/>
+                            <ellipse cx="91" cy="146" rx="8" ry="3" transform="rotate(25 91 146)"/>
+                            <ellipse cx="109" cy="146" rx="8" ry="3" transform="rotate(-25 109 146)"/>
+                        </g>
+                    </defs>
+
+                    <!-- irregular wax blob -->
+                    <path fill="url(#waxGold)" d="M 192.2 98 C 193.9 109.2 191.9 124.2 186 133.6 C 180 143 166 148.9 156.5 154.5 C 146.9 160 137.9 163.1 128.5 166.9 C 119.1 170.6 110 175.5 100 176.8 C 90 178.1 79 177 68.3 174.6 C 57.6 172.1 45.1 168.9 35.9 162.1 C 26.8 155.3 16.6 144.5 13.5 133.8 C 10.4 123.1 14.7 108.9 17.3 98 C 19.9 87.1 25 78.5 28.9 68.5 C 32.7 58.6 34.1 46.8 40.5 38.5 C 46.9 30.2 57.3 22.6 67.2 18.8 C 77.1 15 89.2 15.3 100 15.7 C 110.8 16.1 122.2 17.1 131.8 21.2 C 141.4 25.4 150.2 32.9 157.6 40.4 C 164.9 48 170.1 57 175.9 66.6 C 181.6 76.2 190.5 86.8 192.2 98 Z"/>
+                    <ellipse cx="72" cy="66" rx="40" ry="30" fill="#ffffff" opacity="0.14"/>
+
+                    <!-- recessed centre -->
+                    <circle cx="100" cy="98" r="62" fill="url(#waxInner)"/>
+                    <circle cx="100" cy="98" r="78" fill="none" stroke="#6f4a18" stroke-opacity="0.35" stroke-width="3"/>
+                    <circle cx="100" cy="98" r="62" fill="none" stroke="#f6e8b8" stroke-opacity="0.4" stroke-width="2.5"/>
+                    <circle cx="100" cy="98" r="59" fill="none" stroke="#7a531d" stroke-opacity="0.3" stroke-width="1.5"/>
+
+                    <!-- embossed crest: shadow, highlight, midtone -->
+                    <use href="#botanical" x="1.4" y="1.8" fill="#6f4a18" fill-opacity="0.85"/>
+                    <use href="#botanical" x="-1.2" y="-1.4" fill="#f6e8b8" fill-opacity="0.8"/>
+                    <use href="#botanical" fill="#c39a44"/>
+                </svg>
             </div>
         </div>
-        <p class="envelope-text" data-i18n="envelopeText">This invitation is just for you</p>
-        <p class="tap-hint" data-i18n="tapHint">Tap to open</p>
     </div>
 
     <!-- Main Content -->
@@ -1257,14 +1292,20 @@
         const mainContent = document.getElementById('main-content');
         const languageSelector = document.getElementById('language-selector');
 
+        let envelopeOpened = false;
         envelopeSplash.addEventListener('click', function() {
-            envelopeSplash.classList.add('hidden');
-            
+            if (envelopeOpened) return;
+            envelopeOpened = true;
+
+            // Play the flap-opening animation first
+            envelopeSplash.classList.add('opening');
+
             setTimeout(() => {
+                envelopeSplash.classList.add('hidden');
                 mainContent.classList.add('visible');
                 languageSelector.classList.add('visible');
                 startHeroAnimations();
-            }, 400);
+            }, 950);
         });
 
         // Hero animations
