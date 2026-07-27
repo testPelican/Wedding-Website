@@ -526,6 +526,22 @@
             fill: none;
         }
 
+
+        /* WhatsApp contact link (Romana) */
+        .wa-link {
+            color: #4a5a42;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .wa-link:hover {
+            color: #6b7b5e;
+        }
+
         /* ========== FOOTER ========== */
         .footer {
             text-align: center;
@@ -709,6 +725,24 @@
                     <p class="timeline-description" data-i18n="snackDesc">A late-night treat</p>
                 </div>
 
+                <div class="timeline-item" data-delay="550">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- grotto archway -->
+                            <path d="M4 21v-7a8 8 0 0 1 16 0v7"/>
+                            <path d="M2 21h20"/>
+                            <!-- sparkles inside -->
+                            <path d="M12 10v3"/>
+                            <path d="M10.5 11.5h3"/>
+                            <path d="M8 15v1.5"/>
+                            <path d="M16 15v1.5"/>
+                        </svg>
+                    </div>
+                    <span class="timeline-time">23:30</span>
+                    <h3 class="timeline-title" data-i18n="undergroundTitle">Underground Party</h3>
+                    <p class="timeline-description" data-i18n="undergroundDesc">After-party continues in the grotto</p>
+                </div>
+
                 <div class="timeline-item" data-delay="600">
                     <div class="timeline-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -738,7 +772,7 @@
                 <p class="location-address">Hagenberg 1, 2133 Hagenberg, Austria</p>
                 <p class="location-time">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    <span data-i18n="locationTime">If you would like to go back sooner, then take taxi to Laa an der Thaya main station and the train back to Vienna (OBB App for tickets).</span>
+                    <span data-i18n="locationTime">If you would like to go back sooner, then take taxi to Laa an der Thaya main station and the train back to Vienna (OBB App for tickets). <br>If you need help with taxi organisation, please get in touch with Romana, our organiser, either in person or Whatsapp <a class="wa-link" href="https://wa.me/436502512622" target="_blank" rel="noopener">+43 650 2512622</a>.</span>
                 </p>
             </div>
 
@@ -788,14 +822,16 @@
                 partyDesc: "No Sleep Tonight",
                 snackTitle: "Midnight Snack",
                 snackDesc: "A late-night treat",
+                undergroundTitle: "Underground Party",
+                undergroundDesc: "After-party continues in the grotto",
                 taxiTitle: "Shuttle Back to Vienna",
                 taxiDesc: "We'll bring everyone back to Vienna together",
-                locationTime: "If you would like to go back sooner, then take taxi to Laa an der Thaya main station and the train back to Vienna (OBB App for tickets).",
+                locationTime: "If you would like to go back sooner, then take taxi to Laa an der Thaya main station and the train back to Vienna (OBB App for tickets). <br>If you need help with taxi organisation, please get in touch with Romana, our organiser, either in person or Whatsapp <a class=\"wa-link\" href=\"https://wa.me/436502512622\" target=\"_blank\" rel=\"noopener\">+43 650 2512622</a>.",
                 getDirections: "Get Directions"
             },
             pl: {
                 // Hero
-                coupleNames: "Officially <span class=\"title-mr\">Mr</span> <span class=\"ampersand\">&</span> <span class=\"title-mrs\">Mrs</span> Pierzchalski",
+                coupleNames: "Oficjalnie <span class=\"title-mr\">Pan</span> <span class=\"ampersand\">i</span> <span class=\"title-mrs\">Pani</span> Pierzchalscy",
                 // Programme
                 programmeTitle: "Program Dnia",
                 arrivalTitle: "Przyjazd Busem z Wiednia & Przyjęcie Gości",
@@ -812,14 +848,16 @@
                 partyDesc: "Dziś nie śpimy",
                 snackTitle: "Nocna Przekąska",
                 snackDesc: "Późna niespodzianka",
+                undergroundTitle: "Impreza w Podziemiach",
+                undergroundDesc: "After-party trwa dalej w grocie",
                 taxiTitle: "Powrót Busem do Wiednia",
                 taxiDesc: "Zabierzemy wszystkich razem z powrotem do Wiednia",
-                locationTime: "Jeśli chcielibyście wrócić wcześniej, weźcie taksówkę na dworzec główny w Laa an der Thaya, a następnie pociąg z powrotem do Wiednia (bilety w aplikacji OBB).",
+                locationTime: "Jeśli chcielibyście wrócić wcześniej, weźcie taksówkę na dworzec główny w Laa an der Thaya, a następnie pociąg z powrotem do Wiednia (bilety w aplikacji OBB). <br>Jeśli potrzebujecie pomocy w zorganizowaniu taksówki, skontaktujcie się z Romaną, naszą organizatorką, osobiście lub przez WhatsApp <a class=\"wa-link\" href=\"https://wa.me/436502512622\" target=\"_blank\" rel=\"noopener\">+43 650 2512622</a>.",
                 getDirections: "Pokaż Trasę"
             },
             tr: {
                 // Hero
-                coupleNames: "Officially <span class=\"title-mr\">Mr</span> <span class=\"ampersand\">&</span> <span class=\"title-mrs\">Mrs</span> Pierzchalski",
+                coupleNames: "Resmen <span class=\"title-mr\">Bay</span> <span class=\"ampersand\">&</span> <span class=\"title-mrs\">Bayan</span> Pierzchalski",
                 // Programme
                 programmeTitle: "Günün Programı",
                 arrivalTitle: "Viyana'dan Servis ile Varış & Karşılama",
@@ -836,9 +874,11 @@
                 partyDesc: "Bu Gece Uyku Yok",
                 snackTitle: "Gece Yarısı Atıştırmalığı",
                 snackDesc: "Gece geç saatte bir sürpriz",
+                undergroundTitle: "Yeraltı Partisi",
+                undergroundDesc: "After-party mağarada devam ediyor",
                 taxiTitle: "Servis ile Viyana'ya Dönüş",
                 taxiDesc: "Herkesi birlikte Viyana'ya geri götüreceğiz",
-                locationTime: "Daha erken dönmek isterseniz, Laa an der Thaya ana istasyonuna taksiyle gidip oradan Viyana'ya trenle dönebilirsiniz (biletler için OBB uygulaması).",
+                locationTime: "Daha erken dönmek isterseniz, Laa an der Thaya ana istasyonuna taksiyle gidip oradan Viyana'ya trenle dönebilirsiniz (biletler için OBB uygulaması). <br>Taksi organizasyonu konusunda yardıma ihtiyacınız varsa, lütfen organizatörümüz Romana ile bizzat veya WhatsApp <a class=\"wa-link\" href=\"https://wa.me/436502512622\" target=\"_blank\" rel=\"noopener\">+43 650 2512622</a> üzerinden iletişime geçin.",
                 getDirections: "Yol Tarifi Al"
             }
         };
