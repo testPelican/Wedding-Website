@@ -760,6 +760,22 @@
             fill: none;
         }
 
+
+        /* WhatsApp contact link (Romana) */
+        .wa-link {
+            color: #4a5a42;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .wa-link:hover {
+            color: #6b7b5e;
+        }
+
         /* ========== FOOTER ========== */
         .footer {
             text-align: center;
@@ -1035,6 +1051,24 @@
                     <p class="timeline-description" data-i18n="snackDesc">A late-night treat</p>
                 </div>
 
+                <div class="timeline-item" data-delay="550">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- grotto archway -->
+                            <path d="M4 21v-7a8 8 0 0 1 16 0v7"/>
+                            <path d="M2 21h20"/>
+                            <!-- sparkles inside -->
+                            <path d="M12 10v3"/>
+                            <path d="M10.5 11.5h3"/>
+                            <path d="M8 15v1.5"/>
+                            <path d="M16 15v1.5"/>
+                        </svg>
+                    </div>
+                    <span class="timeline-time">23:30</span>
+                    <h3 class="timeline-title" data-i18n="undergroundTitle">Underground Party</h3>
+                    <p class="timeline-description" data-i18n="undergroundDesc">After-party continues in the grotto</p>
+                </div>
+
                 <div class="timeline-item" data-delay="600">
                     <div class="timeline-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1074,7 +1108,7 @@
                 <p class="section-subtitle" data-i18n="giftDesc">If you feel like giving a little something, we would love a few pennies towards our honeymoon travels 💛</p>
                 <br><br><br>
                 <h3 class="location-name" data-i18n="organiserTitle">Organiser info</h3>
-                <p class="section-subtitle" data-i18n="organiserDesc">If you need help with anything organisation wise, please get in touch with Romana, our organiser, either in Whatsapp +43 650 2512622.</p>
+                <p class="section-subtitle" data-i18n="organiserDesc">If you need help with anything organisation wise, please get in touch with Romana, our organiser, either in Whatsapp <a class="wa-link" href="https://wa.me/436502512622" target="_blank" rel="noopener">+43 650 2512622</a>.</p>
                 <br><br><br>
                 <h3 class="location-name" data-i18n="transportTitle">Transportation</h3>
                 <p class="section-subtitle" data-i18n="transportDesc">A shuttle bus will collect everyone from Schwedenplatz in Vienna and bring you to Schloss Haggenberg, then take everyone back to Vienna in the late evening. <br>If you need to arrive at a different time or leave a little earlier, you can take the train from Vienna to Laa an der Thaya and then a short taxi to the castle (or a taxi to Laa an der Thaya and the train back to Vienna).</p>
@@ -1156,6 +1190,8 @@
                 partyDesc: "No Sleep Tonight",
                 snackTitle: "Midnight Snack",
                 snackDesc: "A late-night treat",
+                undergroundTitle: "Underground Party",
+                undergroundDesc: "After-party continues in the grotto",
                 taxiTitle: "Shuttle Back to Vienna",
                 taxiDesc: "We'll bring everyone back to Vienna together",
                 // Details
@@ -1168,7 +1204,7 @@
                 giftTitle: "A Little Something",
                 giftDesc: "If you feel like giving a little something, we would love a few pennies towards our honeymoon travels 💛",
                 organiserTitle: "Organiser info",
-                organiserDesc: "If you need help with anything organisation wise, please get in touch with Romana, our organiser, either in Whatsapp +43 650 2512622.",
+                organiserDesc: "If you need help with anything organisation wise, please get in touch with Romana, our organiser, either in Whatsapp <a class=\"wa-link\" href=\"https://wa.me/436502512622\" target=\"_blank\" rel=\"noopener\">+43 650 2512622</a>.",
                 transportTitle: "Transportation",
                 transportDesc: "A shuttle bus will collect everyone from Schwedenplatz in Vienna and bring you to Schloss Haggenberg, then take everyone back to Vienna in the late evening. <br>If you need to arrive at a different time or leave a little earlier, you can take the train from Vienna to Laa an der Thaya and then a short taxi to the castle (or a taxi to Laa an der Thaya and the train back to Vienna).",
                 detailsSubtitle: "Join our WhatsApp group to be up to date with everything you need to know!<br><strong>Also please RSVP if you are coming by 15th of July latest.</strong>",
@@ -1205,6 +1241,8 @@
                 partyDesc: "Dziś nie śpimy",
                 snackTitle: "Nocna Przekąska",
                 snackDesc: "Późna niespodzianka",
+                undergroundTitle: "Impreza w Podziemiach",
+                undergroundDesc: "After-party trwa dalej w grocie",
                 taxiTitle: "Powrót Busem do Wiednia",
                 taxiDesc: "Zabierzemy wszystkich razem z powrotem do Wiednia",
                 // Details
@@ -1217,7 +1255,7 @@
                 giftTitle: "Drobny Gest",
                 giftDesc: "Jeśli chcielibyście podarować nam coś od serca, będziemy wdzięczni za kilka groszy na naszą podróż poślubną 💛",
                 organiserTitle: "Informacje Organizacyjne",
-                organiserDesc: "Jeśli potrzebujecie pomocy w kwestiach organizacyjnych, skontaktujcie się z Romaną, naszą organizatorką, przez WhatsApp +43 650 2512622.",
+                organiserDesc: "Jeśli potrzebujecie pomocy w kwestiach organizacyjnych, skontaktujcie się z Romaną, naszą organizatorką, przez WhatsApp <a class=\"wa-link\" href=\"https://wa.me/436502512622\" target=\"_blank\" rel=\"noopener\">+43 650 2512622</a>.",
                 transportTitle: "Transport",
                 transportDesc: "Autokar zabierze wszystkich z placu Schwedenplatz w Wiedniu i przywiezie do Schloss Haggenberg, a późnym wieczorem odwiezie z powrotem do Wiednia. <br>Jeśli musicie dotrzeć o innej porze lub wyjechać nieco wcześniej, możecie pojechać pociągiem z Wiednia do Laa an der Thaya, a stamtąd taksówką do zamku (lub taksówką do Laa an der Thaya i pociągiem z powrotem do Wiednia).",
                 detailsSubtitle: "Dołącz do naszej grupy WhatsApp, aby być na bieżąco ze wszystkim!<br><strong>Prosimy również o potwierdzenie obecności (RSVP) najpóźniej do 15 lipca.</strong>",
@@ -1254,6 +1292,8 @@
                 partyDesc: "Bu Gece Uyku Yok",
                 snackTitle: "Gece Yarısı Atıştırmalığı",
                 snackDesc: "Gece geç saatte bir sürpriz",
+                undergroundTitle: "Yeraltı Partisi",
+                undergroundDesc: "After-party mağarada devam ediyor",
                 taxiTitle: "Servis ile Viyana'ya Dönüş",
                 taxiDesc: "Herkesi birlikte Viyana'ya geri götüreceğiz",
                 // Details
@@ -1266,7 +1306,7 @@
                 giftTitle: "Küçük Bir Jest",
                 giftDesc: "Küçük bir şey vermek isterseniz, balayı seyahatimiz için birkaç kuruş çok makbule geçer 💛",
                 organiserTitle: "Organizatör Bilgileri",
-                organiserDesc: "Organizasyonla ilgili herhangi bir konuda yardıma ihtiyacınız varsa, lütfen organizatörümüz Romana ile WhatsApp +43 650 2512622 üzerinden iletişime geçin.",
+                organiserDesc: "Organizasyonla ilgili herhangi bir konuda yardıma ihtiyacınız varsa, lütfen organizatörümüz Romana ile WhatsApp <a class=\"wa-link\" href=\"https://wa.me/436502512622\" target=\"_blank\" rel=\"noopener\">+43 650 2512622</a> üzerinden iletişime geçin.",
                 transportTitle: "Ulaşım",
                 transportDesc: "Bir servis otobüsü herkesi Viyana'daki Schwedenplatz'dan alıp Schloss Haggenberg'e götürecek, akşamın geç saatlerinde de Viyana'ya geri getirecek. <br>Farklı bir saatte gelmeniz ya da biraz daha erken ayrılmanız gerekirse, Viyana'dan Laa an der Thaya'ya trenle gidip oradan şatoya kısa bir taksi yolculuğu yapabilirsiniz (ya da Laa an der Thaya'ya taksiyle gidip Viyana'ya trenle dönebilirsiniz).",
                 detailsSubtitle: "Her şeyden haberdar olmak için WhatsApp grubumuza katılın!<br><strong>Ayrıca katılacaksanız lütfen en geç 15 Temmuz'a kadar LCV bildiriniz.</strong>",
