@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cici & Michal's Wedding | Save the Date</title>
+    <title>Cici & Michal's Wedding</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -282,8 +282,9 @@
         }
 
         .schloss-container {
-            width: 50vw;
-            margin: 0 auto 40px;
+            width: 44vw;
+            max-width: 300px;
+            margin: 0 auto 20px;
             opacity: 0;
             transform: translateY(20px);
         }
@@ -295,8 +296,9 @@
 
         @media (min-width: 768px) {
             .schloss-container {
-                width: 30vw;
-                min-width: 350px;
+                width: 22vw;
+                min-width: 240px;
+                max-width: 300px;
             }
         }
 
@@ -326,21 +328,6 @@
             margin: 0 5px;
         }
 
-        .save-the-date {
-            font-family: 'Tangerine', cursive;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 400;
-            color: #6b7b5e;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .save-the-date.animate {
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 1.5s;
-        }
-
         .schloss-name {
             font-family: 'Tangerine', cursive;
             font-size: clamp(1.2rem, 3vw, 1.6rem);
@@ -353,7 +340,7 @@
 
         .schloss-name.animate {
             animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 2s;
+            animation-delay: 1.5s;
         }
 
         .wedding-date {
@@ -361,14 +348,14 @@
             font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 400;
             color: #6b7b5e;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             opacity: 0;
             transform: translateY(20px);
         }
 
         .wedding-date.animate {
             animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 2.5s;
+            animation-delay: 2s;
         }
 
         .more-info {
@@ -398,17 +385,7 @@
             }
         }
 
-        /* ========== COUNTDOWN SECTION ========== */
-        .countdown-section {
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(107,123,94,0.05) 50%, transparent 100%);
-        }
-
+        /* ========== COUNTDOWN ========== */
         .section-title {
             font-family: 'Tangerine', cursive;
             font-size: clamp(2.5rem, 8vw, 4rem);
@@ -429,17 +406,25 @@
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 18px;
             flex-wrap: wrap;
-            max-width: 600px;
+            max-width: 680px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .countdown-container.animate {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 2.4s;
         }
 
         .countdown-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 80px;
-            padding: 20px 15px;
+            min-width: 95px;
+            padding: 24px 18px;
             background: rgba(255,255,255,0.5);
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
@@ -448,7 +433,7 @@
 
         .countdown-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 6vw, 3rem);
+            font-size: clamp(2.5rem, 7.5vw, 3.8rem);
             font-weight: 500;
             color: #6b7b5e;
             line-height: 1;
@@ -456,11 +441,11 @@
 
         .countdown-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: #8a7a65;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         /* ========== SCHEDULE SECTION ========== */
@@ -797,9 +782,19 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 480px) {
+            .countdown-container {
+                gap: 10px;
+            }
+
             .countdown-item {
-                min-width: 70px;
-                padding: 15px 10px;
+                min-width: 68px;
+                padding: 16px 8px;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+                margin-top: 8px;
             }
 
             .timeline {
@@ -824,8 +819,8 @@
 
         @media (min-width: 768px) {
             .countdown-item {
-                min-width: 110px;
-                padding: 25px 20px;
+                min-width: 130px;
+                padding: 30px 24px;
             }
         }
     </style>
@@ -921,35 +916,28 @@
                 <div class="hero-text-content">
                     <p class="couple-names" id="couple-names" data-i18n="coupleNames">Cici's <span class="ampersand">&</span> Michal's Wedding</p>
                     
-                    <h1 class="save-the-date" id="save-the-date" data-i18n="saveTheDate">Save the Date</h1>
-                    
                     <p class="schloss-name" id="schloss-name">Schloss Haggenberg</p>
-                    
-                    <p class="wedding-date" id="wedding-date" data-i18n="weddingDate">5th August 2026</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Countdown Section -->
-        <section class="countdown-section">
-            <h2 class="section-title" data-i18n="countingDown">Counting Down</h2>
-            <p class="section-subtitle" data-i18n="untilWeDo">Until we say "I do"</p>
-            <div class="countdown-container">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">000</span>
-                    <span class="countdown-label" data-i18n="days">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label" data-i18n="hours">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label" data-i18n="minutes">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label" data-i18n="seconds">Seconds</span>
+                    <p class="wedding-date" id="wedding-date" data-i18n="weddingDate">Counting Down to the Ceremony</p>
+
+                    <div class="countdown-container" id="hero-countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">000</span>
+                            <span class="countdown-label" data-i18n="days">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-label" data-i18n="hours">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-label" data-i18n="minutes">Minutes</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-label" data-i18n="seconds">Seconds</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1042,7 +1030,7 @@
                     <div class="timeline-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                     </div>
-                    <span class="timeline-time">23:30</span>
+                    <span class="timeline-time">23:00</span>
                     <h3 class="timeline-title" data-i18n="snackTitle">Midnight Snack</h3>
                     <p class="timeline-description" data-i18n="snackDesc">A late-night treat</p>
                 </div>
@@ -1096,10 +1084,6 @@
                     <a href="https://chat.whatsapp.com/IBlCcZkinVUCtyyYB8zjWH" class="qr-code-link"><img src="qr_code.jpg" alt="WhatsApp QR Code" class="qr-code-img"></a>
                     <p class="qr-code-text" data-i18n="qrCodeText">Click on QR code to join the Group!</p>
                 </div>
-                <div class="qr-code-item">
-                    <a href="https://form.jotform.com/261803426683056" class="qr-code-link"><img src="rsvp_qr_code.jpg" alt="RSVP QR Code" class="qr-code-img"></a>
-                    <p class="qr-code-text" data-i18n="rsvpQrCodeText">Please let us know if you are joining us!</p>
-                </div>
             </div>
 
             <div style="text-align: center;">
@@ -1146,11 +1130,8 @@
                 tapHint: "Tap to open",
                 // Hero
                 coupleNames: "Cici's <span class=\"ampersand\">&</span> Michal's Wedding",
-                saveTheDate: "Save the Date",
-                weddingDate: "5th August 2026",
+                weddingDate: "Counting Down to the Ceremony",
                 // Countdown
-                countingDown: "Counting Down",
-                untilWeDo: "Until we say \"I do\"",
                 days: "Days",
                 hours: "Hours",
                 minutes: "Minutes",
@@ -1187,7 +1168,6 @@
                 transportDesc: "A shuttle bus will collect everyone from Schwedenplatz in Vienna and bring you to Schloss Haggenberg, then take everyone back to Vienna in the late evening. <br>If you need to arrive at a different time or leave a little earlier, you can take the train from Vienna to Laa an der Thaya and then a short taxi to the castle (or a taxi to Laa an der Thaya and the train back to Vienna).",
                 detailsSubtitle: "Join our WhatsApp group to be up to date with everything you need to know!<br><strong>Also please RSVP if you are coming by 15th of July latest.</strong>",
                 qrCodeText: "Click on QR code to join the Group!",
-                rsvpQrCodeText: "Please let us know if you are joining us!",
                 locationTime: "From 13:00 to late",
                 getDirections: "Get Directions"
             },
@@ -1197,11 +1177,8 @@
                 tapHint: "Dotknij, aby otworzyć",
                 // Hero
                 coupleNames: "Ślub Cici <span class=\"ampersand\">&</span> Michała",
-                saveTheDate: "Zarezerwuj Datę",
-                weddingDate: "5 Sierpnia 2026",
+                weddingDate: "Odliczamy do Ceremonii",
                 // Countdown
-                countingDown: "Odliczamy",
-                untilWeDo: "Do naszego \"Tak, Biorę\"",
                 days: "Dni",
                 hours: "Godzin",
                 minutes: "Minut",
@@ -1238,7 +1215,6 @@
                 transportDesc: "Autokar zabierze wszystkich z placu Schwedenplatz w Wiedniu i przywiezie do Schloss Haggenberg, a późnym wieczorem odwiezie z powrotem do Wiednia. <br>Jeśli musicie dotrzeć o innej porze lub wyjechać nieco wcześniej, możecie pojechać pociągiem z Wiednia do Laa an der Thaya, a stamtąd taksówką do zamku (lub taksówką do Laa an der Thaya i pociągiem z powrotem do Wiednia).",
                 detailsSubtitle: "Dołącz do naszej grupy WhatsApp, aby być na bieżąco ze wszystkim!<br><strong>Prosimy również o potwierdzenie obecności (RSVP) najpóźniej do 15 lipca.</strong>",
                 qrCodeText: "Kliknij kod QR, aby dołączyć do grupy!",
-                rsvpQrCodeText: "Daj nam znać, czy będziesz z nami!",
                 locationTime: "Od 13:00 do późna",
                 getDirections: "Pokaż Trasę"
             },
@@ -1248,11 +1224,8 @@
                 tapHint: "Açmak için dokun",
                 // Hero
                 coupleNames: "Cici <span class=\"ampersand\">&</span> Michal'ın Düğünü",
-                saveTheDate: "Tarihi Kaydedin",
-                weddingDate: "5 Ağustos 2026",
+                weddingDate: "Törene Geri Sayım",
                 // Countdown
-                countingDown: "Geri Sayım",
-                untilWeDo: "\"Evet\" diyene kadar",
                 days: "Gün",
                 hours: "Saat",
                 minutes: "Dakika",
@@ -1289,7 +1262,6 @@
                 transportDesc: "Bir servis otobüsü herkesi Viyana'daki Schwedenplatz'dan alıp Schloss Haggenberg'e götürecek, akşamın geç saatlerinde de Viyana'ya geri getirecek. <br>Farklı bir saatte gelmeniz ya da biraz daha erken ayrılmanız gerekirse, Viyana'dan Laa an der Thaya'ya trenle gidip oradan şatoya kısa bir taksi yolculuğu yapabilirsiniz (ya da Laa an der Thaya'ya taksiyle gidip Viyana'ya trenle dönebilirsiniz).",
                 detailsSubtitle: "Her şeyden haberdar olmak için WhatsApp grubumuza katılın!<br><strong>Ayrıca katılacaksanız lütfen en geç 15 Temmuz'a kadar LCV bildiriniz.</strong>",
                 qrCodeText: "Gruba katılmak için QR koda tıklayın!",
-                rsvpQrCodeText: "Bize katılıp katılmayacağınızı lütfen bildirin!",
                 locationTime: "13:00'den geç saatlere kadar",
                 getDirections: "Yol Tarifi Al"
             }
@@ -1379,9 +1351,9 @@
             const elements = [
                 'schloss',
                 'couple-names',
-                'save-the-date',
                 'schloss-name',
-                'wedding-date'
+                'wedding-date',
+                'hero-countdown'
             ];
 
             elements.forEach((id) => {
